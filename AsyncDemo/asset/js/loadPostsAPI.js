@@ -7,17 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     loadDataNew();
 });
 
-const spinner = document.getElementById("spinner");
-
-function showSpinner() {
-  spinner.className = "show";
-  setTimeout(() => {
-    spinner.className = spinner.className.replace("show", "");
-  }, 2000);
-}
 //load a single customer function 
 function load_fromPlaceHolder() {
-    showSpinner()
     //open the request 
     fetch('https://jsonplaceholder.typicode.com/posts')
         .then(function(res) {
@@ -69,7 +60,10 @@ async function load_fromPlaceHolder_new() {
 }
 
 function loadDataNew() {
-    load_fromPlaceHolder_new().then(function(posts) {
+    document.querySelector('#main').style.display="block" 
+    setTimeout(() => {
+        document.querySelector('#main').style.display="none" 
+        load_fromPlaceHolder_new().then(function(posts) {
             //iterate over each post [100 posts]
             let output = '';
             posts.forEach(function(post) {
@@ -93,13 +87,14 @@ function loadDataNew() {
             </div>
         </div>
     </div>
-
 `;
-            });
+    });
             postDiv3.innerHTML = output;
         })
         .catch(function(err) {
             console.log(err);
         });
+    }, 3000);
+   
 
 }
