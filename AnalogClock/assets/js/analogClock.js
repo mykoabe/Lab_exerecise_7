@@ -14,6 +14,7 @@ setInterval(() => {
     secondCount.style.transform = `rotateZ(${currentSecond}deg)`;
 })
 
+
 // UI Variables 
 const timerDemo = document.querySelector('.times')
 //timer 
